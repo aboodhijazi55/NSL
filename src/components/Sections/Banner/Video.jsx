@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useState } from 'react'
-import backgroundImg from "../../../assets/video/Screenshot (24).png"
 import "./Banner.css"
 
 export default function Video() {
@@ -8,7 +9,7 @@ export default function Video() {
     return <>
         {/* <video src={backgrounfVideo} autoPlay loop muted /> */}
         <div className="video-container">
-            {!loaded && <img src={backgroundImg} alt="Preview" className="video-placeholder" />}
+            {!loaded && <img src="/video/Screenshot (24).png" alt="Preview" className="video-placeholder" />}
             <video
                 className={`video-bg ${loaded ? "visible" : "hidden"}`}
                 autoPlay

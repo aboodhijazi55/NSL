@@ -65,6 +65,7 @@
     border-bottom: 1px solid #eee;
     font-family: "Quicksand", serif;
     font-size: 15px;
+    text-align: justify;
 }
 
 h6>span {
@@ -83,12 +84,13 @@ h6>span {
 
 h5>svg {
     margin-right: 15px;
+    height: 1em;
 }
 
 h5 {
     font-family: "Quicksand", serif;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1rem !important;
 }
 
 h5>span {
@@ -173,6 +175,17 @@ h5>span {
         margin-bottom: 25px;
     }
 
+    .container.test {
+        display: flex;
+        padding: 40px 31px;
+        justify-content: center;
+    }
+
+    .container>.h6 {
+
+        text-align: center;
+    }
+
     .float-section {
         text-align: center;
     }
@@ -184,18 +197,32 @@ h5>span {
     h5 {
         text-align: left;
     }
+
+    .img-section>img {
+        height: auto;
+        max-width: none;
+        width: 100%;
+    }
+
+    h5>span {
+
+        font-size: 12px;
+    }
 }
 
 .img-section {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .img-section>img {
     border-radius: 12px;
     margin: 10px;
     height: 220px;
-    width: 100%;
+    max-width: 350px;
+    object-fit: cover;
 }

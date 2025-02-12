@@ -1,0 +1,92 @@
+/* styles/404.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    color: #eee;
+    font-family: 'Arial', sans-serif;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 8rem;
+    margin: 0;
+    color: #ff6f61;
+}
+
+.subtitle {
+    font-size: 2rem;
+    margin: 0;
+    color: #ff6f61;
+}
+
+.description {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: #ccc;
+}
+
+.labEquipment {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.flask {
+    width: 60px;
+    height: 120px;
+    background-color: #4CAF50;
+    border-radius: 10px 10px 50px 50px;
+    position: relative;
+    margin-right: 20px;
+}
+
+.flask::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    width: 40px;
+    height: 20px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+}
+
+.testTube {
+    width: 40px;
+    height: 100px;
+    background-color: #2196F3;
+    border-radius: 10px 10px 50px 50px;
+    position: relative;
+}
+
+.testTube::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    width: 30px;
+    height: 20px;
+    background-color: #2196F3;
+    border-radius: 50%;
+}
+
+.homeLink {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: #ff6f61;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.homeLink:hover {
+    background-color: #ff3b2f;
+}

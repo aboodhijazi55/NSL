@@ -32,21 +32,21 @@ function Email() {
     return (
         <>
             <form onSubmit={sendEmail}>
-                <div class="mb-3">
-                    <label htmlFor="emailForm" class="form-label">Email address</label>
+                <div className="mb-3">
+                    <label htmlFor="emailForm" className="form-label">Email address</label>
                     <input name="emailForm"
                         type="email"
-                        class="form-control"
+                        className="form-control"
                         id="emailForm"
                         value={emailForm}
                         placeholder="name@example.com"
                         onChange={(e) => setEmailForm(e.target.value)}
                     />
                 </div>
-                <div class="mb-3">
-                    <label htmlFor="message" class="form-label">Massage</label>
+                <div className="mb-3">
+                    <label htmlFor="message" className="form-label">Massage</label>
                     <textarea name='message'
-                        class="form-control"
+                        className="form-control"
                         id="message"
                         value={message}
                         rows="3"
@@ -54,9 +54,9 @@ function Email() {
                     ></textarea>
 
                 </div>
-                <button type="submit" class="btn  btn-outline-dark" id='button' > {isLoading ? (
-                    <div class="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
-                        <span class="visually-hidden">Loading...</span>
+                <button type="submit" className="btn  btn-outline-dark" id='button' > {isLoading ? (
+                    <div className="spinner-grow" style={{ width: "1rem", height: "1rem" }} role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
                 ) : (
                     'Send'
