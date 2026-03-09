@@ -1,0 +1,73 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #0A1931;
+  --primary2: #1A3D63;
+  --secondary: #4A7FA7;
+  --secondary2: #B3CFE5;
+  --secondary3: #F6FAFD;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Add RTL support and Arabic font styles */
+[dir="rtl"] {
+  font-family: 'Almarai', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+[dir="rtl"] .navbar-brand,
+[dir="rtl"] .nav-link {
+  font-family: 'Almarai', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+[lang="ar"] {
+  font-family: 'Almarai', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+[lang="ar"] .header-text {
+  font-family: 'Almarai', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Smooth transitions for language changes */
+.navbar-brand,
+.nav-link,
+.translate-btn {
+  transition: all 0.3s ease;
+}
+
+/* Ensure proper spacing in RTL */
+[dir="rtl"] .navbar-nav .nav-item {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+[dir="rtl"] .navbar-nav .nav-item:not(:last-child) {
+  margin-left: 1rem;
+  margin-right: 0;
+}

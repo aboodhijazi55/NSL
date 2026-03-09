@@ -1,6 +1,8 @@
+'use client';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlask } from '@fortawesome/free-solid-svg-icons';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
 	device4,
 	device6,
@@ -14,13 +16,10 @@ import {
 	device18,
 } from '@/components/Sections/Services/img';
 
-export const metadata = {
-	title: 'NSL - Fuel Testing',
-	description:
-		'الوطنية المنخصصه للمخبرات - Fuel Testing - يعد الاختبار ضروريًا لضمان جودة وأداء وسلامة الوقود مثل الديزل والبنزين ',
-};
+
 
 export default function FuelTests() {
+	const { t } = useLanguage();
 	return (
 		<>
 			<div className='test-banner'>
@@ -34,10 +33,7 @@ export default function FuelTests() {
 						<div className='col-lg-12'>
 							<div className='top-text header-text'>
 								<h1>NSL</h1>
-								<h6>
-									The <span>First </span> and Only Independent Laboratory In
-									Jordan
-								</h6>
+								<h6>{t('bannerText')}</h6>
 							</div>
 						</div>
 					</div>
@@ -46,17 +42,11 @@ export default function FuelTests() {
 			<div className='container test'>
 				<div className='row'>
 					<div className='container h1'>
-						<h1>Fuel Tests</h1>
+						<h1>{t('fuelTests')}</h1>
 					</div>
 					<div className='container h6'>
 						<h6 className='h6'>
-							<span>Fuel Testing </span> is essential to ensure the quality,
-							performance, and safety of fuels such as diesel, gasoline, and
-							kerosene. It evaluates key parameters like density, viscosity,
-							flash point, and contamination levels to ensure compliance with
-							industry standards. Regular testing helps improve fuel efficiency,
-							prevent engine damage, and reduce emissions, supporting reliable
-							and sustainable operation.
+							<span>{t('fuelTestsIntroLabel')}</span> {t('fuelTestsIntroDesc')}
 						</h6>
 					</div>
 					<div className='  container float-section'>

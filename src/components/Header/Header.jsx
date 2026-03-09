@@ -3,8 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
+
 function Header() {
 	const [scrollPosition, setScrollPosition] = useState(false);
+	const { language, toggleLanguage, t } = useLanguage();
 
 	useEffect(() => {
 		const handleScroll = (e) => {
@@ -29,6 +32,7 @@ function Header() {
 						? 'navbar navbar-expand-md mb-1 bg-dark navbar-dark text-white fixed-top'
 						: 'navbar navbar-expand-md bg-none navbar-dark mb-1 fixed-top navbar-scrolled'
 				}
+				dir={language === 'ar' ? 'rtl' : 'ltr'}
 			>
 				<div className='container'>
 					{/* <a href="#x" className="navbar-brand">NATIONAL SPECIALIZED LABORATORY</a> */}
@@ -36,7 +40,7 @@ function Header() {
 						href='/'
 						className='navbar-brand'
 					>
-						NATIONAL SPECIALIZED LABORATORY
+						{t('brandName')}
 					</Link>
 					<button
 						className='navbar-toggler header-button'
@@ -59,7 +63,7 @@ function Header() {
 									href='/#home'
 									className='nav-link'
 								>
-									Home
+									{t('home')}
 								</a>
 							</li>
 							<li className='nav-item'>
@@ -67,7 +71,7 @@ function Header() {
 									href='/#Service'
 									className='nav-link'
 								>
-									Our Service
+									{t('ourService')}
 								</a>
 							</li>
 							<li className='nav-item'>
@@ -75,7 +79,7 @@ function Header() {
 									href='/#client'
 									className='nav-link'
 								>
-									Our Client
+									{t('ourClient')}
 								</a>
 							</li>
 							<li className='nav-item'>
@@ -83,8 +87,29 @@ function Header() {
 									href='/#footer'
 									className='nav-link'
 								>
-									Contact Us
+									{t('contactUs')}
 								</a>
+							</li>
+							<li className='nav-item'>
+								<a
+									href='/auth/login'
+									className='nav-link'
+								>
+									{t('login')}
+								</a>
+							</li>
+							<li className='nav-item'>
+								<button
+									onClick={toggleLanguage}
+									className='btn btn-outline-light btn-sm ms-2 translate-btn'
+									style={{
+										minWidth: '60px',
+										fontSize: '0.875rem',
+										padding: '0.375rem 0.75rem'
+									}}
+								>
+									{language === 'en' ? 'عربي' : 'EN'}
+								</button>
 							</li>
 						</ul>
 					</div>

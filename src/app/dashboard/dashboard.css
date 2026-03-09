@@ -1,0 +1,56 @@
+/* Dashboard-only styles — separate from landing and auth */
+@import '@/app/styles/colors.css';
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--secondary3);
+}
+
+.dashboard-sidebar {
+  width: 200px;
+  background: var(--primary);
+  color: #f1f5f9;
+  padding: 1.5rem 0;
+}
+
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dashboard-nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+  transition: background, color 0.2s;
+}
+
+.dashboard-nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  background: #f8fafc;
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .dashboard-sidebar {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .dashboard-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

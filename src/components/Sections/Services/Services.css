@@ -132,6 +132,35 @@ button {
 	text-align: center;
 }
 
+/* RTL Support for Arabic */
+[dir="rtl"] .popular-categories .icon {
+	margin-right: 0;
+	margin-left: 15px;
+}
+
+[dir="rtl"] .popular-categories .naccs .menu div {
+	text-align: right;
+}
+
+[dir="rtl"] .popular-categories .nacc .thumb .left-text {
+	margin-left: 0;
+	margin-right: 30px;
+}
+
+[dir="rtl"] .popular-categories .nacc .thumb .left-text h4,
+[dir="rtl"] .popular-categories .nacc .thumb .left-text p {
+	text-align: right;
+}
+
+[dir="rtl"] button {
+	margin-left: 0;
+	margin-right: 27px;
+}
+
+[dir="rtl"] .popular-categories .nacc .thumb .left-text .main-white-button a {
+	text-align: center;
+}
+
 @media (width<991px) {
 	.popular-categories .nacc .thumb .right-image {
 		display: flex;
@@ -146,5 +175,13 @@ button {
 	.popular-categories .nacc .thumb img {
 		border-radius: 7px;
 		max-width: 70%;
+	}
+}
+
+/* RTL responsive adjustments */
+@media (width<991px) {
+	[dir="rtl"] .popular-categories .nacc .thumb .left-text p {
+		padding-right: 0;
+		padding-left: 30px;
 	}
 }

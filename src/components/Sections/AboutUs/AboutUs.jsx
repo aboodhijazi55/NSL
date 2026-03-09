@@ -1,6 +1,7 @@
 import React from 'react';
 import './AboutUs.css';
 import { aboutImg, lab1, lab2, lab3, lab4, lab5 } from '../Services/img';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
 	img1,
 	img2,
@@ -26,14 +27,15 @@ import {
 import Image from 'next/image';
 
 function AboutUs() {
+	const { t, language } = useLanguage();
 	return (
 		<>
-			<div className='recent-listing'>
+			<div className='recent-listing' dir={language === 'ar' ? 'rtl' : 'ltr'}>
 				<div className='container'>
 					<div className='row'>
 						<div className='col-lg-12'>
 							<div className='section-heading'>
-								<h2>About Us</h2>
+								<h2>{t('aboutUs')}</h2>
 							</div>
 							<div className='container img-carousel'>
 								<div
@@ -135,9 +137,9 @@ function AboutUs() {
 					</div>
 				</div>
 			</div>
-			<div className='container '>
+			<div className='container' dir={language === 'ar' ? 'rtl' : 'ltr'}>
 				<div className='section-heading logo-section'>
-					<h2>Our Client</h2>
+					<h2>{t('ourClient')}</h2>
 				</div>
 
 				<div className='logos'>

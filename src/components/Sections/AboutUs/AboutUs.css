@@ -10,7 +10,6 @@
     margin-bottom: 50px;
 }
 
-
 .container .img-carousel {
     max-width: 80vw;
 }
@@ -21,7 +20,6 @@
 
 .our-client {
     margin: 40px 0 30px 0;
-
 }
 
 @media (width < 991px) {
@@ -42,6 +40,17 @@
 
     to {
         transform: translateX(-100%);
+    }
+}
+
+/* RTL animation for Arabic */
+@keyframes slide-rtl {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
     }
 }
 
@@ -90,4 +99,27 @@
 
 .logo-section {
     text-align: center;
+}
+
+/* RTL Support for AboutUs */
+[dir="rtl"] .recent-listing .section-heading h2,
+[dir="rtl"] .logo-section h2 {
+    text-align: center;
+    font-family: 'Almarai', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+[dir="rtl"] .logos-slide {
+    animation: 35s slide-rtl infinite linear;
+}
+
+[dir="rtl"] .logos:before {
+    left: auto;
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+[dir="rtl"] .logos:after {
+    right: auto;
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
 }

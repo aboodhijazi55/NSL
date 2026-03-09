@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import emailjs from "@emailjs/browser"
+import { useLanguage } from '@/contexts/LanguageContext';
 function Email() {
+    const { t, language } = useLanguage();
     const [emailForm, setEmailForm] = useState("");
     const [message, setMessage] = useState("");
     const [showAlert, setShowAlert] = useState(false);
@@ -31,9 +33,9 @@ function Email() {
 
     return (
         <>
-            <form onSubmit={sendEmail}>
+            <form onSubmit={sendEmail} dir={language === 'ar' ? 'rtl' : 'ltr'}>
                 <div className="mb-3">
-                    <label htmlFor="emailForm" className="form-label">Email address</label>
+                    <label htmlFor="emailForm" className="form-label">{t('emailAddress')}</label>
                     <input name="emailForm"
                         type="email"
                         className="form-control"
@@ -44,7 +46,7 @@ function Email() {
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="message" className="form-label">Massage</label>
+                    <label htmlFor="message" className="form-label">{t('message')}</label>
                     <textarea name='message'
                         className="form-control"
                         id="message"
@@ -59,16 +61,17 @@ function Email() {
                         <span className="visually-hidden">Loading...</span>
                     </div>
                 ) : (
-                    'Send'
+                    t('send')
                 )}</button>
                 {showAlert && (
                     <div className="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                        <strong>Success!</strong> Your message has been sent.
+                        <strong>{t('success')}</strong> {t('messageSent')}
                         <button
                             type="button"
                             className="btn-close"
                             aria-label="Close"
                             onClick={() => setShowAlert(false)}
+
                         ></button>
                     </div>
                 )}

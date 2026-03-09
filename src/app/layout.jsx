@@ -1,19 +1,18 @@
-import './globals.css';
+import './styles/globals.css';
 
 import { Quicksand } from 'next/font/google';
-import { Header, Footer } from '@/components';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import ClientLayout from '@/components/ClientLayout';
 
 const quicksand = Quicksand({
 	variable: '--font-quicksand',
 	subsets: ['latin'],
 });
 
-export const metadata = {
-	title: 'NSL - الوطنية المتخصصة للمختبرات',
-	description:
-		'الوطنية المنخصصه للمخبرات - Fuel Testing - تعتبر عملية اختبار زيت التشحيم عملية أساسية لمراقبة أداء وحالة زيوت التشحيم المستخدمة في الآلات والمحركات.',
-};
-
+/**
+ * Root layout: global styles, fonts, and providers only.
+ * Header/Footer are in (landing)/layout.jsx. Auth and dashboard use their own layouts.
+ */
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
@@ -84,12 +83,17 @@ export default function RootLayout({ children }) {
 					href='https://fonts.googleapis.com/css2?family=Italianno&family=Quicksand:wght@300..700&display=swap'
 					rel='stylesheet'
 				/>
+				<link
+					href='https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap'
+					rel='stylesheet'
+				/>
 			</head>
 			<body className={`${quicksand.variable}`}>
-				<Header />
-
-				{children}
-				<Footer />
+				<LanguageProvider>
+					<ClientLayout>
+						{children}
+					</ClientLayout>
+				</LanguageProvider>
 				<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossOrigin="anonymous"></script>
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossOrigin="anonymous"></script>
 			</body>

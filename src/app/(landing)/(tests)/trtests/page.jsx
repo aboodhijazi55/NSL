@@ -1,4 +1,6 @@
+'use client';
 import React from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlask } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -8,13 +10,8 @@ import {
 	device14,
 } from '@/components/Sections/Services/img';
 
-export const metadata = {
-	title: 'NSL -TR Oil Testing',
-	description:
-		'الوطنية المنخصصه للمخبرات - Transformer oil testing  -  تقوم هذه الاختبارات المتخصص بتقييم جودة وأداء الزيت العازل المستخدم في المحولات، والذي يلعب دورًا حيويًا في التبريد والعزل الكهربائي',
-};
-
 export default function TRTests() {
+	const { t } = useLanguage();
 	return (
 		<>
 			<div className='test-banner'>
@@ -28,10 +25,7 @@ export default function TRTests() {
 						<div className='col-lg-12'>
 							<div className='top-text header-text'>
 								<h1>NSL</h1>
-								<h6>
-									The <span>First </span> and Only Independent Laboratory In
-									Jordan
-								</h6>
+								<h6>{t('bannerText')}</h6>
 							</div>
 						</div>
 					</div>
@@ -40,21 +34,11 @@ export default function TRTests() {
 			<div className='container test'>
 				<div className='row'>
 					<div className='container h1'>
-						<h1>Transformer Oil Tests</h1>
+						<h1>{t('transformerOilTests')}</h1>
 					</div>
 					<div className='container h6'>
 						<h6 className='h6'>
-							<span>Transformer oil testing </span> is a critical process in
-							ensuring the reliability and longevity of power transformers. This
-							specialized test evaluates the quality and performance of the
-							insulating oil used in transformers, which plays a vital role in
-							cooling and electrical insulation. Key parameters assessed include
-							dielectric strength, moisture content, acidity, and the presence
-							of dissolved gases, which can indicate potential faults. Regular
-							testing helps identify degradation, contamination, or early signs
-							of issues, allowing for timely maintenance and preventing costly
-							failures. This ensures the efficient operation and safety of
-							electrical systems.
+							<span>{t('trTestsIntroLabel')}</span> {t('trTestsIntroDesc')}
 						</h6>
 					</div>
 					<div className='  container float-section'>

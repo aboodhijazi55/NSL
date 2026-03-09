@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import './Services.css';
 import {
 	trIcon,
@@ -14,48 +15,45 @@ import {
 } from './img';
 import Link from 'next/link';
 
-const content = [
-	{
-		title: 'Transformer Oil Tests',
-		description:
-			'Transformer oil testing is a critical process in ensuring the reliability and longevity of power transformers. This specialized test evaluates the quality and performance of the insulating oil used in transformers, which plays a vital role in cooling and electrical insulation.',
-		buttonText: 'Discover More',
-		imgSrc: trImg,
-		iconSrc: trIcon,
-		link: '/trtests',
-	},
-	{
-		title: 'Lube & Engine Oil Tests',
-		description:
-			'Lube oil testing is an essential process for monitoring the performance and condition of lubricating oils used in machinery and engines.',
-		buttonText: 'Explore More',
-		imgSrc: hydImg,
-		iconSrc: toIcon,
-		link: '/lubetests',
-	},
-	{
-		title: 'Fuel Tests',
-		description:
-			'Fuel testing ensures the quality and performance of fuels like diesel, gasoline, and kerosene. It analyzes key properties such as density, viscosity, flash point, and contaminants to ensure compliance with standards. Regular testing helps optimize efficiency, prevent engine issues, and reduce emissions.',
-		buttonText: 'More Listing',
-		imgSrc: fuleImg,
-		iconSrc: fuleIcon,
-		link: '/fueltests',
-	},
-	{
-		title: 'Filtration',
-		description:
-			'we are professional due to the long experience in this field. Vacuuming Transformer before filling, fill under vacuum. purifay and treat oil from contamination, humidity and degassing.',
-		buttonText: 'Discover More',
-		imgSrc: fillImg,
-		iconSrc: filtrationIcon,
-		link: '/filtration',
-	},
-];
-
 function Services() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const p = useRef();
+	const { t, language } = useLanguage();
+
+	const content = [
+		{
+			title: 'transformerOilTests',
+			description: 'transformerOilDescription',
+			buttonText: 'discoverMore',
+			imgSrc: trImg,
+			iconSrc: trIcon,
+			link: '/trtests',
+		},
+		{
+			title: 'lubeEngineOilTests',
+			description: 'lubeEngineOilDescription',
+			buttonText: 'exploreMore',
+			imgSrc: hydImg,
+			iconSrc: toIcon,
+			link: '/lubetests',
+		},
+		{
+			title: 'fuelTests',
+			description: 'fuelTestsDescription',
+			buttonText: 'moreListing',
+			imgSrc: fuleImg,
+			iconSrc: fuleIcon,
+			link: '/fueltests',
+		},
+		{
+			title: 'filtration',
+			description: 'filtrationDescription',
+			buttonText: 'discoverMore',
+			imgSrc: fillImg,
+			iconSrc: filtrationIcon,
+			link: '/filtration',
+		},
+	];
 
 	function handleTabClick(index) {
 		setActiveIndex(index);
@@ -64,14 +62,14 @@ function Services() {
 
 	return (
 		<>
-			<section id='Service'>
+			<section id='Service' dir={language === 'ar' ? 'rtl' : 'ltr'}>
 				<div className='popular-categories'>
 					<div className='container'>
 						<div className='row'>
 							<div className='col-lg-12'>
 								<div className='section-heading'>
-									<h2>Our Services</h2>
-									<h6>Check Them Out</h6>
+									<h2>{t('ourServices')}</h2>
+									<h6>{t('checkThemOut')}</h6>
 								</div>
 							</div>
 							<div className='col-lg-12'>
@@ -93,7 +91,7 @@ function Services() {
 																	alt=''
 																/>
 															</span>
-															{item.title}
+															{t(item.title)}
 														</div>
 													))}
 												</div>
@@ -114,8 +112,8 @@ function Services() {
 																	<div className='row'>
 																		<div className='col-lg-5 align-self-center'>
 																			<div className='left-text'>
-																				<h4>{item.title}</h4>
-																				<p>{item.description}</p>
+																				<h4>{t(item.title)}</h4>
+																				<p>{t(item.description)}</p>
 																				<button
 																					type='button'
 																					className='btn btn-outline-light'
@@ -124,7 +122,7 @@ function Services() {
 																						href={item.link}
 																						className='white-link'
 																					>
-																						Read More
+																						{t('readMore')}
 																					</Link>
 																				</button>
 																			</div>

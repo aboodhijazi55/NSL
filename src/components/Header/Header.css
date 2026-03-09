@@ -13,6 +13,33 @@
     }
 }
 
+/* Translation button styles */
+.translate-btn {
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.translate-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* RTL support */
+[dir="rtl"] .navbar-nav {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+[dir="rtl"] .ms-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+[dir="rtl"] .ms-2 {
+    margin-right: 0.5rem !important;
+    margin-left: 0 !important;
+}
 
 .bg-dark {
     background-color: #091625 !important;

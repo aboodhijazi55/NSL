@@ -1,0 +1,73 @@
+@import '@/app/styles/colors.css';
+
+.auth-layout {
+  height: 100vh;
+  background-color: var(--secondary3) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.main-btn {
+  color: #fff !important;
+  background-color: var(--primary2) !important;
+  border-color: var(--primary2) !important;
+}
+
+.main-btn:hover,
+.main-btn:focus {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.main-btn:focus {
+  box-shadow: 0 0 0 0.15rem rgb(25 79 93 / 45%);
+}
+
+.main-font-color {
+  color: var(--primary2) !important;
+}
+
+.dark-gray-color {
+  color: #434343 !important;
+}
+
+.black-color {
+  color: black;
+}
+
+.font-w-700 {
+  font-weight: 700;
+}
+
+.font-w-600 {
+  font-weight: 600;
+}
+
+.font-size-17 {
+  font-size: 17px !important;
+}
+
+.bg-auth-pages {
+  background-size: cover;
+  height: 170px;
+}
+
+.account-pages {
+  min-height: 50vh;
+}
+
+.login-box-margin {
+  margin-top: 2rem;
+}
+
+.footer-alt {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer-alt a:hover {
+  text-decoration: underline;
+}

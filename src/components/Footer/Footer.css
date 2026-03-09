@@ -86,6 +86,28 @@ ul li a {
     text-decoration: solid;
 }
 
+/* RTL Support for Footer */
+[dir="rtl"] footer h4 {
+    font-family: 'Almarai', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+[dir="rtl"] ul li .img {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+[dir="rtl"] .helpful-links {
+    margin: 0px 45px;
+}
+
+[dir="rtl"] .form-label {
+    font-family: 'Almarai', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+[dir="rtl"] .alert {
+    font-family: 'Almarai', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 @media (width<991px) {
 
     .logo {
@@ -127,5 +149,13 @@ ul li a {
 
     footer h4 {
         text-align: center;
+    }
+}
+
+/* RTL responsive adjustments */
+@media (width<500px) {
+    [dir="rtl"] .ul {
+        padding-left: 0;
+        padding-right: 7px;
     }
 }
