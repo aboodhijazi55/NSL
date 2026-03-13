@@ -65,3 +65,20 @@ src/
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+
+##################################
+reference numbers
+
+for Dashbard /tr status 
+1- normal 
+2- monitoring 
+3 - need action 
+
+
+for reports/sample (sample type)
+1 - transFormers oil 
+2 -fuel (LFO / HFO)
+3 - Gear oil 
+4 - Engine oil 
+5 - hydraulic oil 
+6- other 

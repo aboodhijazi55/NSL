@@ -1,23 +1,141 @@
 /* Dashboard-only styles — separate from landing and auth */
 @import '@/app/styles/colors.css';
 
+.dashboard-logo {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+
 .dashboard-layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  width: 100%;
   background: var(--secondary3);
 }
 
-.dashboard-sidebar {
-  width: 200px;
+.dashboard-header {
+  width: 100%;
   background: var(--primary);
   color: #f1f5f9;
-  padding: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  flex-shrink: 0;
 }
 
 .dashboard-nav {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem;
+  position: relative;
+}
+
+.dashboard-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #f1f5f9;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-nav-menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+@media (max-width: 999px) {
+  .dashboard-nav-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .dashboard-nav-menu {
+    margin-left: 0;
+    display: none;
+    position: absolute;
+    top: 150%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background: var(--primary);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    gap: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+  }
+
+  .dashboard-nav-menu--open {
+    display: flex;
+  }
+
+  .dashboard-nav-menu a {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+  }
+
+  .dashboard-nav-back {
+    margin-left: 0;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .dashboard-nav-back a {
+    width: 100%;
+  }
+
+  /* Mobile: Settings dropdown flows inline (no hover), tap to expand */
+  .dashboard-nav-dropdown-wrap {
+    width: 100%;
+  }
+
+  .dashboard-nav-dropdown-trigger {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+
+  .dashboard-nav-dropdown {
+    position: static;
+    width: 100%;
+    min-width: auto;
+    transform: none;
+    padding: 0.25rem 0 0.5rem 1.5rem;
+    box-shadow: none;
+    background: transparent;
+    display: none;
+  }
+
+  .dashboard-nav-dropdown-wrap.is-open .dashboard-nav-dropdown {
+    display: block;
+  }
+
+  .dashboard-nav-dropdown a {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+  }
 }
 
 .dashboard-nav a {
@@ -33,24 +151,90 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Settings: desktop = hover dropdown, mobile = inline list only */
+.dashboard-nav-dropdown-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.dashboard-nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+  transition: background, color 0.2s;
+}
+
+.dashboard-nav-dropdown-trigger:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Desktop only: floating dropdown on hover */
+@media (min-width: 1000px) {
+  .dashboard-nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    padding: 0.5rem 0;
+    background: var(--primary);
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+    z-index: 20;
+  }
+
+  .dashboard-nav-dropdown-wrap:hover .dashboard-nav-dropdown,
+  .dashboard-nav-dropdown-wrap.is-open .dashboard-nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dashboard-nav-dropdown a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #94a3b8;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .dashboard-nav-dropdown a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.dashboard-nav-back {
+  margin-left: auto;
+}
+
 .dashboard-main {
   flex: 1;
-  padding: 1.5rem 2rem;
+  padding: 0 2rem 1.5rem 2rem;
   background: #f8fafc;
 }
 
 @media (max-width: 768px) {
-  .dashboard-layout {
-    flex-direction: column;
-  }
-
-  .dashboard-sidebar {
-    width: 100%;
-    padding: 1rem;
+  .dashboard-header {
+    padding: 0.75rem 1rem;
   }
 
   .dashboard-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .dashboard-nav-back {
+    margin-left: 0;
+    width: 100%;
   }
 }

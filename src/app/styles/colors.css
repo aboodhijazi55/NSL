@@ -5,4 +5,7 @@
     --secondary2: #B3CFE5;
     --secondary3: #F6FAFD;
     --yellow: #f8f51e;
+    --gradient-green: linear-gradient(180deg, #32d583 0%, #1db954 50%, #0ea853 100%);
+    --gradient-orange: linear-gradient(180deg, #f39c12 0%, #e67e22 50%, #d35400 100%);
+    --gradient-red: linear-gradient(180deg, #ff6b6b 0%, #e50914 50%, #b71c1c 100%);
 }

@@ -1,0 +1,101 @@
+/* Breadcrumb: title left with underline, trail right — matches design */
+@import '@/app/styles/colors.css';
+
+.breadcrumbHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.breadcrumbTitleBlock {
+  flex-shrink: 0;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.3;
+}
+
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: inherit;
+}
+
+.titleIcon {
+  margin-left: 0.25rem;
+}
+
+.titleUnderline {
+  margin: 0.5rem 0 0;
+  width: 8rem;
+  height: 4px;
+  border: none;
+  background: var(--primary2);
+  color: var(--primary2);
+}
+
+/* Breadcrumb trail on the right */
+.breadcrumbNav {
+  flex-shrink: 0;
+}
+
+.breadcrumbList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.breadcrumbItem {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbLink {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumbLink:hover {
+  color: #6b7280;
+}
+
+.breadcrumbCurrent {
+  color: #6b7280;
+}
+
+.separator {
+  color: #9ca3af;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  /* .breadcrumbHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  } */
+
+  .pageTitle {
+    font-size: 1.25rem;
+  }
+}
