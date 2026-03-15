@@ -69,9 +69,8 @@ export default function DashboardLayout({ children }) {
 								<SettingsOutlinedIcon style={{ fontSize: '22px' }} /> Settings
 							</button>
 							<div className="dashboard-nav-dropdown">
-								<Link href="/dashboard/settings" onClick={closeMenu}>General</Link>
-								<Link href="/dashboard/settings/profile" onClick={closeMenu}>Profile</Link>
-								<Link href="/dashboard/settings/account" onClick={closeMenu}>Account</Link>
+								<Link href="/dashboard/settings/users" onClick={closeMenu}>Users</Link>
+
 							</div>
 						</div>
 						<div className="dashboard-nav-back">

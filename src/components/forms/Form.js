@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Controller, FormProvider, useFormContext } from 'react-hook-form';
 import './forms.css';

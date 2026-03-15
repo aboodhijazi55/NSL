@@ -10,62 +10,61 @@ import {
     TableCell,
 } from '@/components/layout/table';
 import { Row, Col } from 'reactstrap';
-import EastOutlinedIcon from '@mui/icons-material/EastOutlined';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Form, FormInput, FormMultiInput, FormMultiSelect, FormDatePicker, } from '@/components/forms';
 import Drawer from '@/components/layout/Drawer';
-// import AddNewClient from '@/components/Drawer/addNewClient';
+import AddNewUser from '@/components/Drawer/addNewUser';
 function Page() {
 
     const [open, setOpen] = useState(false);
     const form = useForm({
         defaultValues: {
-            clinetName: '',
-            clinetEmail: '',
-            clinetPhone: '',
+            userName: '',
+            userEmail: '',
         }
     });
     const onSubmit = (data) => {
         console.log(data);
     }
     const header = [
-        "Clinet Name",
-        "Clinet Email",
-        "Clinet Phone",
-        "Clinet Address",
+        "User Name",
+        "User Email",
+        "User Phone",
+        "User Address",
         "Action"
 
     ]
     const body = [{
-        "Clinet Name": "Hassan",
-        "Clinet Email": ["hassan@gmail.com"],
-        "Clinet Phone": ["0799999999", "0788888888"],
-        "Clinet Address": "Amman",
+        "UserName": "Hassan",
+        "UserEmail": "hassan@gmail.com",
+        "UserPhone": "0799999999",
+        "UserAddress": "Amman",
 
     },
     {
-        "Clinet Name": "Hassan",
-        "Clinet Email": ["hassan@gmail.com", "ahmed@gmail.com"],
-        "Clinet Phone": ["0799999999", "0788888888"],
-        "Clinet Address": "Amman",
+        "UserName": "Hassan",
+        "UserEmail": "hassan@gmail.com",
+        "UserPhone": "0799999999",
+        "UserAddress": "Amman",
     },
     {
-        "Clinet Name": "Hassan",
-        "Clinet Email": ["hassan@gmail.com", "ahmed@gmail.com"],
-        "Clinet Phone": ["0799999999", "0788888888"],
-        "Clinet Address": "Amman",
+        "UserName": "Hassan",
+        "UserEmail": "hassan@gmail.com",
+        "UserPhone": "0799999999",
+        "UserAddress": "Amman",
     },
 
     ]
     return (
         <>
             <Breadcrumb
-                pageTitle="Clients"
+                pageTitle="Users"
                 breadcrumbItems={[
                     { label: 'Home', href: '/dashboard' },
-                    { label: 'Clients', active: true },
+                    { label: 'Users', active: true },
                 ]}
             />
             <div className='filter-container'>
@@ -75,28 +74,20 @@ function Page() {
                             <Col col={3}>
                                 <FormInput
                                     control={form.control}
-                                    name='clinetName'
-                                    placeholder='Enter Clinet Name'
+                                    name='userName'
+                                    placeholder='Enter User Name'
                                     type='text'
                                 />
                             </Col>
                             <Col col={3}>
                                 <FormInput
                                     control={form.control}
-                                    name='clinetEmail'
-                                    placeholder='Enter Clinet Email'
+                                    name='userEmail'
+                                    placeholder='Enter User Email'
                                     type='email'
                                 />
                             </Col>
-                            <Col col={3}>
-                                <FormInput
-                                    control={form.control}
-                                    name='clinetPhone'
-                                    placeholder='Enter Clinet Phone'
-                                    className='w-100'
-                                    type='text'
-                                />
-                            </Col>
+
 
                             <Col col={3} className='d-flex justify-content-end align-items-end gap-2  pb-2'>
                                 <button type='submit' className='search-btn '>
@@ -104,7 +95,7 @@ function Page() {
 
                                 </button>
                                 <button type='button' onClick={() => setOpen(true)} className='add-btn'>
-                                    Add New Client
+                                    Add New User
                                 </button>
                             </Col>
                         </Row>
@@ -124,23 +115,12 @@ function Page() {
                     <TableBody>
                         {body.map((item, index) => (
                             <TableRow key={index}>
-                                <TableCell>{item["Clinet Name"]}</TableCell>
-                                <TableCell>{item["Clinet Email"].map((email, index) => (
-                                    <span key={index}>{email} <br /></span>
-                                ))}</TableCell>
-                                <TableCell>{item["Clinet Phone"].map((phone, index) => (
-                                    <span key={index}>{phone} <br /></span>
-                                ))}</TableCell>
-                                <TableCell>{item["Clinet Address"]}</TableCell>
+                                <TableCell>{item["UserName"]}</TableCell>
+                                <TableCell>{item["UserEmail"]}</TableCell>
+                                <TableCell>{item["UserPhone"]}</TableCell>
+                                <TableCell>{item["UserAddress"]}</TableCell>
                                 <TableCell className="text-end" >
-                                    <Link
-                                        variant="icon"
-                                        size="icon"
-                                        href={`/dashboard/reports/samples?id=${item["JOB"]}`}
-
-                                    >
-                                        <EastOutlinedIcon style={{ fontSize: '20px', color: 'var(--primary)' }} />
-                                    </Link>
+                                    <CreateOutlinedIcon onClick={() => setOpen(true)} style={{ cursor: 'pointer', fontSize: '20px', color: 'var(--primary)' }} />
 
                                 </TableCell>
                             </TableRow>
@@ -151,9 +131,9 @@ function Page() {
             <Drawer
                 open={open}
                 onClose={() => setOpen(false)}
-                title='Add New Client'
+                title='Add New User'
             >
-                {/* <AddNewClient onClose={() => setOpen(false)} /> */}
+                <AddNewUser onClose={() => setOpen(false)} />
             </Drawer>
         </>
     )
