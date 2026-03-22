@@ -70,7 +70,7 @@ export default function DashboardLayout({ children }) {
 							</button>
 							<div className="dashboard-nav-dropdown">
 								<Link href="/dashboard/settings/users" onClick={closeMenu}>Users</Link>
-
+								<Link href="/dashboard/settings/tests" onClick={closeMenu}>Tests</Link>
 							</div>
 						</div>
 						<div className="dashboard-nav-back">

@@ -82,3 +82,7 @@ for reports/sample (sample type)
 4 - Engine oil 
 5 - hydraulic oil 
 6- other 
+
+for clients /job status 
+0 -pending 
+1 -completed 

@@ -3,7 +3,7 @@
 import '@/app/styles/colors.css';
 
 import trWhiteIcon from "@/assets/img/tr-white-icon.png"
-
+import Link from 'next/link';
 const CARDS = [
     {
         id: '1',
@@ -107,7 +107,7 @@ export default function TransCards() {
                         </div>
                         <div className="trans-card__footer">
                             <span className="trans-card__status">Status : {trStatus(card.status)}</span>
-                            <span className="trans-card__action" aria-hidden>↗</span>
+                            <Link href={`/dashboard/transformer?id=${card.id}`} className="trans-card__action" aria-hidden>↗</Link>
                         </div>
                     </article>
                 ))}
