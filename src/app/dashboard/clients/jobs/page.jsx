@@ -151,14 +151,14 @@ function Page() {
                 onClose={() => setOpenAdd(false)}
                 title='Add New JOB'
             >
-                <AddOrEditJOB onClose={() => setOpenAdd(false)} from="add" />
+                <AddOrEditJOB onClose={() => setOpenAdd(false)} from="add" clientId={cid} />
             </Drawer>
             <Drawer
                 open={openEdit}
                 onClose={() => setOpenEdit(false)}
                 title='Edit JOB'
             >
-                <AddOrEditJOB onClose={() => setOpenEdit(false)} from="edit" />
+                <AddOrEditJOB onClose={() => setOpenEdit(false)} from="edit" clientId={cid} />
             </Drawer>
             <Modal open={openModal} onClose={() => setOpenModal(false)} title='Delete JOB' subtitle='Are you sure you want to delete this JOB?' onConfirm={() => handleDelete(id)} />
 

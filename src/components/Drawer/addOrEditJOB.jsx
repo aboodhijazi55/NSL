@@ -1,11 +1,10 @@
-import React from 'react'
-import { useForm, useFieldArray } from 'react-hook-form';
-import { Form, FormInput, FormMultiEmailSelect, FormSelect, FormDatePicker, } from '@/components/forms';
-import { Button, IconButton } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form';
+import { Form, FormInput, FormSelect, FormDatePicker, } from '@/components/forms';
+import { Button } from '@mui/material';
+import { createJob } from '@/actions/jobs';
 
-function AddOrEditJOB({ onClose, from }) {
+function AddOrEditJOB({ onClose, from, clientId = '' }) {
 
     const form = useForm({
         defaultValues: {
@@ -14,11 +13,21 @@ function AddOrEditJOB({ onClose, from }) {
             status: 0,
         }
     });
+    const [error, setError] = useState('');
 
-
-
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        setError('');
+        const cid = clientId === '' ? null : Number.parseInt(String(clientId), 10);
+        const res = await createJob({
+            jobNumber: data.jobNumber,
+            date: data.date,
+            status: Number(data.status),
+            clientId: Number.isNaN(cid) ? null : cid,
+        });
+        if (!res.ok) {
+            setError(res.error ?? 'Could not save job.');
+            return;
+        }
         onClose();
     }
     return (
@@ -51,6 +60,7 @@ function AddOrEditJOB({ onClose, from }) {
                     ]}
                 />
 
+                {error && <p className="text-danger small mb-2">{error}</p>}
                 <div className='d-flex justify-content-end align-items-end gap-2 mt-3'>
                     <Button type='submit' className='add-btn'>Save</Button>
                 </div>
