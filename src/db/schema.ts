@@ -12,7 +12,7 @@ import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 /** Example table — replace or extend with your real schema. */
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
-  companyName: text("company_name").notNull(),
+  displayName: text("display_name").notNull(),
   username: text("username").notNull().unique(),
   password: text("password").notNull(),
   phone: text("phone").notNull(),
@@ -67,14 +67,21 @@ export const nsl = pgTable("nsl", {
   reportDate: text("report_date").notNull(),
   samplePoint: text("sample_point").notNull(),
   oilTemperature: text("oil_temperature").notNull(),
-  /** Arbitrary JSON payload (lab results, etc.). */
-  result: jsonb("result").$type<Record<string, unknown>>().notNull(),
+
 
   createdAt: timestamp("created_at", { withTimezone: true })
     .defaultNow()
     .notNull(),
 });
-
+export const reportResult = pgTable("report_result", {
+  id: serial("id").primaryKey(),
+  nslId: integer("nsl_id").references(() => nsl.id).notNull(),
+  testId: integer("test_id").references(() => listOfTests.id).notNull(),
+  result: jsonb("result").$type<Record<string, unknown>>().notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
 export const listOfTests = pgTable("list_of_tests", {
   id: serial("id").primaryKey(),
   testName: text("test_name").notNull(),

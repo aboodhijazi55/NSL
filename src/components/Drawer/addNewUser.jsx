@@ -1,26 +1,40 @@
-import React from 'react'
-import { useForm, useFieldArray } from 'react-hook-form';
-import { Form, FormInput, FormMultiEmailSelect, FormMultiSelect, FormDatePicker, } from '@/components/forms';
-import { Button, IconButton } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form';
+import { Form, FormInput, FormSelect } from '@/components/forms';
+import { Button } from '@mui/material';
+import { createUser } from '@/actions/users';
 
 function addNewUser({ onClose }) {
 
+    const [error, setError] = useState('');
+
     const form = useForm({
         defaultValues: {
+            displayName: '',
             userName: '',
-            userEmail: '',
             userPassword: '',
             userPhone: '',
             userAddress: '',
+            role: '3',
         }
     });
 
 
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        setError('');
+        const res = await createUser({
+            displayName: data.displayName,
+            userName: data.userName,
+            userPassword: data.userPassword,
+            userPhone: data.userPhone,
+            userAddress: data.userAddress,
+            role: data.role,
+        });
+        if (!res.ok) {
+            setError(res.error ?? 'Could not save user.');
+            return;
+        }
         onClose();
     }
     return (
@@ -28,18 +42,17 @@ function addNewUser({ onClose }) {
             <form onSubmit={form.handleSubmit(onSubmit)} className='w-100'>
                 <FormInput
                     control={form.control}
+                    name='displayName'
+                    label='Display Name'
+                    placeholder='Enter Display Name'
+                    rules={{ required: 'Display Name is required' }}
+                />
+                <FormInput
+                    control={form.control}
                     name='userName'
                     label='User Name'
                     placeholder='Enter User Name'
                     rules={{ required: 'User Name is required' }}
-                />
-                <FormInput
-                    control={form.control}
-                    type='email'
-                    name='userEmail'
-                    label='User Email'
-                    placeholder='Enter User Email'
-                    rules={{ required: 'Email is required' }}
                 />
                 <FormInput
                     control={form.control}
@@ -64,8 +77,23 @@ function addNewUser({ onClose }) {
                     placeholder='Enter User Address'
                     rules={{ required: 'Address is required' }}
                 />
+                <FormSelect
+                    control={form.control}
+                    name='role'
+                    label='Role'
+                    placeholder='Select Role'
+                    rules={{ required: 'Role is required' }}
+                    options={[
+                        { value: '3', label: 'User' },
+                        { value: '2', label: 'Admin' },
+                        { value: '1', label: 'Super Admin' },
+                    ]}
+                />
+                {error && <p className="text-danger small mb-2">{error}</p>}
                 <div className='d-flex justify-content-end align-items-end gap-2 mt-3'>
-                    <Button type='submit' className='add-btn'>Save</Button>
+                    <Button type='submit' className='add-btn' disabled={form.formState.isSubmitting}>
+                        {form.formState.isSubmitting ? 'Saving…' : 'Save'}
+                    </Button>
                 </div>
             </form>
         </Form >
